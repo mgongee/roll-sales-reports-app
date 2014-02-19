@@ -23,7 +23,7 @@
 						?>
 						
 						<tr>
-							<td><?php echo $entry['manager_id']?></td>
+							<td><?php echo $entry['manager_name']?></td>
 							<td><?php echo $entry['state']?></td>
 							<td><?php echo $entry['site_address']?></td>
 							<td><?php echo $entry['builder']?></td>

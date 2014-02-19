@@ -58,6 +58,8 @@ class RollSaleController {
 		global $T;
 		
 		$T['entries'] = RollSaleManager::getAll();
+		$T['entries'] = RollSaleManager::getManagerName($T['entries']);
+		
 		$templateName = __FUNCTION__;
 		return $this->compose($templateName);
 	}

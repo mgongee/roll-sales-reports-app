@@ -57,6 +57,13 @@ class RollSaleManager {
 		return $rows;
 	}
 	
+	static public function getManagerName($entries) {
+		foreach ($entries as &$entry) {
+			$entry['manager_name'] = 'John Doe';//	$entry['manager_id']
+		}
+		return $entries;
+	}
+	
 	static public function getCountInEachState() {
 		global $DB;
 		$rows = array();
