@@ -1,19 +1,35 @@
 <?php
 
          include('adodb/adodb.inc.php');
+		 include('config.inc.php');
+		 include('roll-sale.class.php');
+		 include('controller.class.php');
+		 include('partials.class.php');
 
-         $db = ADONewConnection($dbdriver); # eg 'mysql' or 'postgres'
+		 global $DB;
+		 global $ROUTE;
+		 global $CONF; // configuration
+		 global $T; // variables sent to the template
+		 
+		 $CONF = $config;
+		 $T = array(
+			 'manager_id' => 45,
+			 'messages' => array()
+		 );
+		 
+         $DB = ADONewConnection('mysql'); # eg 'mysql' or 'postgres'
 
-         $db->debug = true;
+         $DB->debug = false;
+		 $DB->Connect($CONF['mysql_server'], $CONF['mysql_user'], $CONF['mysql_password'], $CONF['mysql_database']);
 
-         $db->Connect($config['server'], $config['user'], $config['password'], $config['database']);
-
-         $rs = $db->Execute('select * from roll_sales');
-
+		 $controller = new RollSaleController();
+		 
+		 $controller->route();
+		 /*
          print "<pre>";
 
-         print_r($rs->GetRows());
+         print_r($rows);
 
          print "</pre>";
-
+*/
 ?>
