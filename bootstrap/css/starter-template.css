@@ -1,0 +1,20 @@
+/* 
+    Document   : starter-template
+    Created on : 19.02.2014, 20:34:15
+    Author     : mgongee
+    Description:
+        Taken from http://getbootstrap.com/examples/starter-template/
+*/
+
+body {
+  padding-top: 50px;
+}
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+div.exception {
+	text-align: left;	
+}
+
