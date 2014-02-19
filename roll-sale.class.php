@@ -139,6 +139,25 @@ class RollSaleManager {
 		
 		return $url;
 	}
+	
+	static public  function generateListReportDoc() {
+		$salesInfo = self::getAll();
+		$salesInfo = self::getManagerName($salesInfo);
+		
+		$writer = new ListReportDocWriter($salesInfo);
+		$content = $writer->write();
+		
+		return $content;
+	}
+	
+	static public  function generateStatesReportDoc() {
+		
+		$statesInfo = self::getStatesInfo();
+		$writer = new StateReportDocWriter($statesInfo);
+		$content = $writer->write();
+		
+		return $content;
+	}
 
 }
 ?>

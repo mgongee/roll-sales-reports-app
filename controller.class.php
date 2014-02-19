@@ -42,6 +42,18 @@ class RollSaleController {
 		
 		return $html;
 	}
+	
+	public function headers($headers,$content) {
+		global $T;
+		extract($T);
+		
+		foreach ($headers as $header) {
+			header($header);
+		}
+		echo $content;
+		
+		die();
+	}
 
 	
 	private function pageIndex() {
@@ -82,6 +94,18 @@ class RollSaleController {
 		return $this->compose('export');
 	}
 	
+	private function pageExport_word_states() {
+		
+		$filename = time() . '_states.doc';
+		$headers = array(
+			"Content-type: application/vnd.ms-word",
+			"Content-Disposition: attachment;Filename=" . $filename
+		);
+		$content = RollSaleManager::generateStatesReportDoc();
+		
+		return $this->headers($headers,$content);
+	}
+	
 	private function pageExport_excel_list() {
 		global $T;
 		
@@ -89,5 +113,17 @@ class RollSaleController {
 		$T['reportName'] = 'Sales List - Excel report';
 		
 		return $this->compose('export');
+	}
+	
+	private function pageExport_word_list() {
+		
+		$filename = time() . '_list.doc';
+		$headers = array(
+			"Content-type: application/vnd.ms-word",
+			"Content-Disposition: attachment;Filename=" . $filename
+		);
+		$content = RollSaleManager::generateListReportDoc();
+		
+		return $this->headers($headers,$content);
 	}
 }
