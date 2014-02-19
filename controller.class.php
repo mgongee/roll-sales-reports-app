@@ -11,10 +11,10 @@ class RollSaleController {
 
 			if(method_exists($this, $methodName)) {
 				$ROUTE = $route;
-				echo $this->$methodName();
+				echo $this->$methodName(); // process and echo the templates
 			} 
 			else {
-			  throw new Exception(sprintf('The required method "%s" does not exist for %s', $method, get_class($this)));
+			  throw new Exception(sprintf('The required method "%s" does not exist for %s', $methodName, get_class($this)));
 			}
 		}
 		catch (Exception $e) {
@@ -75,4 +75,19 @@ class RollSaleController {
 		return $this->compose($templateName);
 	}
 
+	private function pageExport_excel_states() {
+		global $T;
+		$T['reportPath'] = RollSaleManager::generateStatesReportXls();
+		$T['reportName'] = 'Sales by state - Excel report';
+		return $this->compose('export');
+	}
+	
+	private function pageExport_excel_list() {
+		global $T;
+		
+		$T['reportPath'] = RollSaleManager::generateListReportXls();
+		$T['reportName'] = 'Sales List - Excel report';
+		
+		return $this->compose('export');
+	}
 }

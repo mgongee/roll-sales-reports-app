@@ -5,6 +5,12 @@
 		 include('roll-sale.class.php');
 		 include('controller.class.php');
 		 include('partials.class.php');
+		 
+		 include('state-xls-writer.class.php');
+		 //include('state-doc-writer.class.php');
+		 
+		 include('list-xls-writer.class.php');
+		 //include('list-doc-writer.class.php');
 
 		 global $DB;
 		 global $ROUTE;

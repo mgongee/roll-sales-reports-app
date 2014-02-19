@@ -6,5 +6,6 @@ $config = array(
 	'mysql_user' => 'jm',
 	'mysql_password' => '7dK5IHyzN113yyCG84Kw',
 	'upload_dir' => "uploads" ,
+	'reports_dir' => "reports" ,
 	'states' => array('NSW','VIC','QLD','WA','TAS','SA','ACT')
 );
