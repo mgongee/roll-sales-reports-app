@@ -31,7 +31,7 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <?php echo RollSalePartials::menu(); ?>
+            <?php echo RollSalePartialsBootstrap::menu(); ?>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -40,16 +40,5 @@
     <div class="container">
 
       <div class="starter-template">
-
-		  <?php
-		  if ((isset($messages)) && (is_array($messages)) && (count($messages) > 0)) {
-			  foreach ($messages as $i => $message) {
-				  ?>
-		  <div class="alert <?php echo $message['style']; ?> alert-dismissable">
-			<button aria-hidden="true" data-dismiss="alert" class="close" type="button">X</button>
-			<?php echo $message['text']; ?>
-		  </div>
-				<?php
-			  }
-		  }
-		  ?>
+		<?php echo RollSalePartialsBootstrap::messages($messages); ?>
+		  

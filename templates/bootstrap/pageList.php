@@ -19,7 +19,7 @@
 					<input id="route" name="route" type="hidden" value="list"/>
 		
 					<select id="state" name="state" class="form-control">
-						<?php echo RollSalePartials::statesSelect($_GET['state']); ?>
+						<?php echo RollSalePartialsBootstrap::statesSelect($_GET['state']); ?>
 					</select>
 					</fieldset>
 				</form>

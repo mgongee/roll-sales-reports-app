@@ -26,6 +26,7 @@ class RollSaleController {
 	}
 
 	public function compose($templateName) {
+		global $CONF;
 		global $T;
 		extract($T);
 		
@@ -33,9 +34,11 @@ class RollSaleController {
 		
 		ob_start();
 		
-		include('templates/header.php');
-		include('templates/'. $templateName .'.php');
-		include('templates/footer.php');
+		$templateDir = 'templates' . DIRECTORY_SEPARATOR . $CONF['theme'] . DIRECTORY_SEPARATOR;
+		
+		include($templateDir . 'header.php');
+		include($templateDir . $templateName .'.php');
+		include($templateDir . 'footer.php');
 		
 		$html = ob_get_contents();
 		ob_end_clean();
