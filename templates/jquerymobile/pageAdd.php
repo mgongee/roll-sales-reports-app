@@ -1,4 +1,4 @@
-<form enctype="multipart/form-data" class="form-horizontal" method="POST" action="?route=add">
+<form enctype="multipart/form-data" data-ajax="false" class="form-horizontal" method="POST" action="?route=add">
 <fieldset>
 
 <input id="manager_id" name="manager_id" type="hidden" value="<?php echo $manager_id; ?>">
@@ -16,7 +16,7 @@
 <!-- Select Basic -->
 
 <label for="state" class="select">State:</label>
-<select name="select-choice-0" id="state">
+<select name="state" id="state">
 	<?php
 
 	global $CONF;
