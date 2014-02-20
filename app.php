@@ -20,6 +20,7 @@
 		 $CONF = $config;
 		 $T = array(
 			 'manager_id' => 45,
+			 'manager' => 'John Doe',
 			 'messages' => array()
 		 );
 		 

@@ -1,6 +1,17 @@
-      <div class="page-header">
+      
+	<div class="row">
+
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    <small>Welcome,</small>
+					<?php echo $manager ?>
+                </h1>
+            </div>
+
+        </div>
+	<div class="page-header">
         <h1>Sales by state</h1>
-      </div>
+    </div>
     
 	<hr>
 	
