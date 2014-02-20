@@ -116,20 +116,18 @@ class RollSaleManager {
 		global $CONF;
 		$filePath = $CONF['reports_dir'] . DIRECTORY_SEPARATOR . time() . '_states.xls';
 		$savePath = dirname(__FILE__) . DIRECTORY_SEPARATOR . $filePath;
-		$url = $CONF['reports_dir'] . '/' . time() . '_states.xls';
 		
 		$statesInfo = self::getStatesInfo();
 		$xlsWriter = new StatesReportXlsWriter($statesInfo);
 		$xlsWriter->writeAsExcel5($savePath);
 		
-		return $url;
+		return file_get_contents($savePath);
 	}
 	
 	static public  function generateListReportXls() {
 		global $CONF;
 		$filePath = $CONF['reports_dir'] . DIRECTORY_SEPARATOR . time() . '_list.xls';
 		$savePath = dirname(__FILE__) . DIRECTORY_SEPARATOR . $filePath;
-		$url = $CONF['reports_dir'] . '/' . time() . '_list.xls';
 		
 		$salesInfo = self::getAll();
 		$salesInfo = self::getManagerName($salesInfo);
@@ -137,7 +135,7 @@ class RollSaleManager {
 		$xlsWriter = new ListReportXlsWriter($salesInfo);
 		$xlsWriter->writeAsExcel5($savePath);
 		
-		return $url;
+		return file_get_contents($savePath);
 	}
 	
 	static public  function generateListReportDoc() {

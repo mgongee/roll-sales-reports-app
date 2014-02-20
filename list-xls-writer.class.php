@@ -72,6 +72,8 @@ class ListReportXlsWriter {
 			$objPHPExcel->getActiveSheet()->getColumnDimension(self::$alphabet[$columnNumber])->setWidth($columnWidth);
 		}
 
+		$objPHPExcel->getActiveSheet()->getStyle('A1:H1')->getFont()->setBold(true);
+		
 		foreach ($this->data as $rowData) {
 			$i++;
 			foreach (self::$columnHeaders as $columnNumber => $columnHeader) {

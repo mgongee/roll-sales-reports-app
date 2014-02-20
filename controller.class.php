@@ -89,8 +89,17 @@ class RollSaleController {
 
 	private function pageExport_excel_states() {
 		global $T;
-		$T['reportPath'] = RollSaleManager::generateStatesReportXls();
-		$T['reportName'] = 'Sales by state - Excel report';
+		$content = RollSaleManager::generateStatesReportXls();
+		$filename = time() . '_states.xls';
+		
+		$headers = array(
+			"Content-Type: application/vnd.ms-excel",
+			"Content-Disposition: attachment; filename=$filename",
+			"Pragma: no-cache",
+			"Expires: 0"
+		);
+
+		return $this->headers($headers, $content);
 		return $this->compose('export');
 	}
 	
@@ -109,10 +118,17 @@ class RollSaleController {
 	private function pageExport_excel_list() {
 		global $T;
 		
-		$T['reportPath'] = RollSaleManager::generateListReportXls();
-		$T['reportName'] = 'Sales List - Excel report';
+		$content = RollSaleManager::generateListReportXls();
+		$filename = time() . '_list.xls';
 		
-		return $this->compose('export');
+		$headers = array(
+			"Content-Type: application/vnd.ms-excel",
+			"Content-Disposition: attachment; filename=$filename",
+			"Pragma: no-cache",
+			"Expires: 0"
+		);
+		
+		return $this->headers($headers,$content);
 	}
 	
 	private function pageExport_word_list() {

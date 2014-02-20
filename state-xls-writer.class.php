@@ -58,6 +58,8 @@ class StatesReportXlsWriter {
 			$value = $columnHeader;
 				$objPHPExcel->getActiveSheet()->getCell($address)->setValueExplicit($value, PHPExcel_Cell_DataType::TYPE_STRING);
 		}
+		
+		$objPHPExcel->getActiveSheet()->getStyle('A1:H1')->getFont()->setBold(true);
 
 		foreach ($this->data as $stateName => $rowData) {
 			$i++;
