@@ -53,7 +53,7 @@
 				<?php endif; ?>
 			</td>
 			<td><?php if ($entry['invoice_file']) : ?>
-				<a href="<?php echo $entry['invoice_file']?>" class="btn btn-info btn-sm" role="button">Download</a>
+				<a href="<?php echo $entry['invoice_file']?>" data-role="button" data-inline="true"><img src="jquerymobile/images/pdf-icon.png"/></a>
 				<?php else: ?>
 				No file
 				<?php endif; ?>
