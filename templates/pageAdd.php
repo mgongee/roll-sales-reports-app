@@ -6,6 +6,14 @@
 <!-- Form Name -->
 <legend>ADD NEW ENTRY</legend>
 
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="rolls_sold"></label>  
+  <div class="col-md-4">
+	  <h2><small>Manager:</small> <?php echo $manager ?></h2>
+  </div>
+</div>
+
 <!-- Text input-->
 <div class="form-group">
   <label class="col-md-4 control-label" for="rolls_sold">Rolls</label>  
@@ -14,7 +22,7 @@
   <span class="help-block">Number of rolls sold</span>  
   </div>
 </div>
-
+           
 <!-- Select Basic -->
 <div class="form-group">
   <label class="col-md-4 control-label" for="state">State</label>
