@@ -22,6 +22,15 @@ class ListReportXlsWriter {
 		'Rebate' => 'rebate_percentage'
 	);
 	
+	static public $columnsWidth = array(
+		'Manager' => 20,
+		'State'	=> 10,
+		'Site address' => 50,
+		'Builder' => 30,
+		'Distributor' => 30,
+		'Rebate' => 10
+	);
+	
 	public $xlsData = false;
 
 	public function __construct($data) {
@@ -57,7 +66,10 @@ class ListReportXlsWriter {
 		foreach (self::$columnHeaders as $columnNumber => $columnHeader) {
 			$address = self::$alphabet[$columnNumber] . ((string)$i);
 			$value = $columnHeader;
+			$columnWidth = self::$columnsWidth[$columnHeader];
+			
 			$objPHPExcel->getActiveSheet()->getCell($address)->setValueExplicit($value, PHPExcel_Cell_DataType::TYPE_STRING);
+			$objPHPExcel->getActiveSheet()->getColumnDimension(self::$alphabet[$columnNumber])->setWidth($columnWidth);
 		}
 
 		foreach ($this->data as $rowData) {
