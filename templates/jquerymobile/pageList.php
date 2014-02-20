@@ -53,7 +53,7 @@
 				<?php endif; ?>
 			</td>
 			<td><?php if ($entry['invoice_file']) : ?>
-				<a href="<?php echo $entry['invoice_file']?>" data-role="button" data-inline="true"><img src="jquerymobile/images/pdf-icon.png"/></a>
+				<a href="<?php echo $entry['invoice_file']?>" data-role="button" data-inline="true" data-ajax="false"><img src="jquerymobile/images/pdf-icon.png"/></a>
 				<?php else: ?>
 				No file
 				<?php endif; ?>
@@ -67,5 +67,5 @@
 			
 </div>
     
-<a target="_blank" href="?route=export_excel_list<?php echo $state ? "&state=$state" : ""; ?>" data-role="button" data-inline="true">Download Excel</a>
-<a target="_blank" href="?route=export_word_list<?php echo $state ? "&state=$state" : ""; ?>" data-role="button" data-inline="true">Download Word</a>
+<a data-ajax="false" href="?route=export_excel_list<?php echo $state ? "&state=$state" : ""; ?>" data-role="button" data-inline="true">Download Excel</a>
+<a data-ajax="false" href="?route=export_word_list<?php echo $state ? "&state=$state" : ""; ?>" data-role="button" data-inline="true">Download Word</a>
