@@ -68,8 +68,27 @@ class RollSaleController {
 	
 	private function pageList() {
 		global $T;
+		global $CONF;
 		
-		$T['entries'] = RollSaleManager::getAll();
+		if ((!isset($_GET['state'])) || ($_GET['state'] == '')) {
+			$state = '';		
+		}
+		elseif (in_array($_GET['state'],$CONF['states'])) {
+			$state = $_GET['state'];
+		}
+		else {
+			$state = '';	
+		}
+		
+		if ($state) {
+			$T['state'] = $state;
+			$T['entries'] = RollSaleManager::getByState($state);
+		}
+		else {
+			$T['state'] = '';
+			$T['entries'] = RollSaleManager::getAll();
+		}
+		
 		$T['entries'] = RollSaleManager::getManagerName($T['entries']);
 		
 		$templateName = __FUNCTION__;
@@ -116,29 +135,62 @@ class RollSaleController {
 	}
 	
 	private function pageExport_excel_list() {
-		global $T;
+		global $CONF;
 		
-		$content = RollSaleManager::generateListReportXls();
-		$filename = time() . '_list.xls';
+		if ((!isset($_GET['state'])) || ($_GET['state'] == '')) {
+			$state = '';		
+		}
+		elseif (in_array($_GET['state'],$CONF['states'])) {
+			$state = $_GET['state'];
+		}
+		else {
+			$state = '';	
+		}
 		
+		if ($state) {
+			$content = RollSaleManager::generateListReportXls($state);
+			$filename = time() . '_list_' . $state . '.doc';
+		}
+		else {
+			$content = RollSaleManager::generateListReportXls();
+			$filename = time() . '_list.xls';
+		}
 		$headers = array(
 			"Content-Type: application/vnd.ms-excel",
 			"Content-Disposition: attachment; filename=$filename",
 			"Pragma: no-cache",
 			"Expires: 0"
 		);
-		
 		return $this->headers($headers,$content);
 	}
 	
 	private function pageExport_word_list() {
+		global $CONF;
 		
-		$filename = time() . '_list.doc';
+		if ((!isset($_GET['state'])) || ($_GET['state'] == '')) {
+			$state = '';		
+		}
+		elseif (in_array($_GET['state'],$CONF['states'])) {
+			$state = $_GET['state'];
+		}
+		else {
+			$state = '';	
+		}
+		
+		if ($state) {
+			$filename = time() . '_list_' . $state . '.doc';
+			$content = RollSaleManager::generateListReportDoc($state);
+
+		}
+		else {
+			$filename = time() . '_list.doc';
+			$content = RollSaleManager::generateListReportDoc();
+		}
+		
 		$headers = array(
 			"Content-type: application/vnd.ms-word",
 			"Content-Disposition: attachment;Filename=" . $filename
 		);
-		$content = RollSaleManager::generateListReportDoc();
 		
 		return $this->headers($headers,$content);
 	}

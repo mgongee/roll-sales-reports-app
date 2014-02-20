@@ -57,6 +57,17 @@ class RollSaleManager {
 		return $rows;
 	}
 	
+	static public function getByState($state) {
+		global $DB;
+		$rows = array();
+		$state = mysql_real_escape_string($state);
+		$rs = $DB->Execute("SELECT * FROM `roll_sales` WHERE state = '$state'");
+		while ($array = $rs->FetchRow()) {
+			$rows[] = $array;
+		}
+		return $rows;
+	}
+	
 	static public function getManagerName($entries) {
 		foreach ($entries as &$entry) {
 			$entry['manager_name'] = 'John Doe';//	$entry['manager_id']
@@ -124,12 +135,17 @@ class RollSaleManager {
 		return file_get_contents($savePath);
 	}
 	
-	static public  function generateListReportXls() {
+	static public  function generateListReportXls($state = "") {
 		global $CONF;
 		$filePath = $CONF['reports_dir'] . DIRECTORY_SEPARATOR . time() . '_list.xls';
 		$savePath = dirname(__FILE__) . DIRECTORY_SEPARATOR . $filePath;
 		
-		$salesInfo = self::getAll();
+		if ($state) {
+			$salesInfo = self::getByState($state);
+		}
+		else {
+			$salesInfo = self::getAll();
+		}
 		$salesInfo = self::getManagerName($salesInfo);
 		
 		$xlsWriter = new ListReportXlsWriter($salesInfo);
@@ -138,8 +154,14 @@ class RollSaleManager {
 		return file_get_contents($savePath);
 	}
 	
-	static public  function generateListReportDoc() {
-		$salesInfo = self::getAll();
+	static public  function generateListReportDoc($state = "") {
+		
+		if ($state) {
+			$salesInfo = self::getByState($state);
+		}
+		else {
+			$salesInfo = self::getAll();
+		}
 		$salesInfo = self::getManagerName($salesInfo);
 		
 		$writer = new ListReportDocWriter($salesInfo);

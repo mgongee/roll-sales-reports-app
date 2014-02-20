@@ -1,9 +1,40 @@
       <div class="page-header">
-        <h1>List of sales</h1>
+		<?php 
+			if (!$state) : ?>
+				<h1>List of sales</h1>
+			<?php else: ?>
+				<h1>List of sales with state &laquo;<?php echo $_GET['state'] ?>&raquo;</h1>
+			<?php endif; ?>
       </div>
 
 	<div class="row">
-        <div class="col-md-12">
+		<div class="col-md-3"></div>
+        <div class="col-md-6">
+			<!-- Select Basic -->
+			<div class="form-group">
+			  
+			  <div class="col-md-8">
+				<form id="filter-form" class="form-horizontal" method="GET" action="index.php">
+					<fieldset>
+					<input id="route" name="route" type="hidden" value="list"/>
+		
+					<select id="state" name="state" class="form-control">
+						<?php echo RollSalePartials::statesSelect($_GET['state']); ?>
+					</select>
+					</fieldset>
+				</form>
+			  </div>
+			  <div class="col-md-4">
+				<input id="filter-button" name="filter-button" class="btn btn-primary" type="submit" value="Filter"/>
+			  </div>
+			</div>
+
+			
+		</div>
+		<div class="col-md-3"></div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">`
 			<div class="table-responsive">
 				<table class="table table-bordered table-hover table-striped">
 					<thead>
@@ -52,7 +83,7 @@
 	
 	<div class="row">
         <div class="col-md-3"></div>
-		<div class="col-md-3"><h3><a href="?route=export_excel_list"><span class="label label-success">Download Excel</span></a></h3></div>
-		<div class="col-md-3"><h3><a href="?route=export_word_list"><span class="label label-info">Download Word</span></a></h3></div>
+		<div class="col-md-3"><h3><a href="?route=export_excel_list<?php echo $state ? "&state=$state" : ""; ?>"><span class="label label-success">Download Excel</span></a></h3></div>
+		<div class="col-md-3"><h3><a href="?route=export_word_list<?php echo $state ? "&state=$state" : ""; ?>"><span class="label label-info">Download Word</span></a></h3></div>
         <div class="col-md-3"></div>
     </div>

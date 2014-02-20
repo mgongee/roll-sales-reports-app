@@ -31,4 +31,21 @@ class RollSalePartials {
 		
 		return $html;
 	}
+	
+	static public function statesSelect($selectedState = '') {
+		global $CONF;
+		$states = $CONF['states'];
+		$html = "<option value=\"ALL\">All states</option>\r\n";
+		foreach ($states as $state) {
+			if ($state == $selectedState) {
+				$selected = "selected=\"selected\" ";
+				
+			} else {
+				$selected = "";
+				
+			}
+			$html .= "<option $selected value=\"$state\">$state</option>\r\n";
+		}
+		return $html;
+	}
 }
