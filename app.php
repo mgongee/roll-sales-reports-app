@@ -18,9 +18,13 @@
 		 global $T; // variables sent to the template
 		 
 		 $CONF = $config;
+		 
+		 $_manager_name = isset($_SESSION['manager_name']) ? $_SESSION['manager_name'] : 'Jenny Razor';
+		 
+		 
 		 $T = array(
 			 'manager_id' => 45,
-			 'manager' => 'John Doe',
+			 'manager_name' => $_manager_name,
 			 'messages' => array()
 		 );
 		 

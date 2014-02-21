@@ -1,7 +1,7 @@
 
 	<h1 class="page-header">
 		<small>Welcome,</small>
-		<?php echo $manager ?>
+		<?php echo $manager_name ?>
 	</h1>
 
 	<h1>Sales by state</h1>

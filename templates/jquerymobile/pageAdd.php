@@ -1,9 +1,10 @@
-<form enctype="multipart/form-data" data-ajax="false" class="form-horizontal" method="POST" action="?route=add">
+<form id="add-new-sale" enctype="multipart/form-data" data-ajax="false" class="form-horizontal" method="POST" action="?route=add">
 <fieldset>
 
 <input id="manager_id" name="manager_id" type="hidden" value="<?php echo $manager_id; ?>">
+<input id="manager_name" name="manager_name" type="hidden" value="<?php echo $manager_name; ?>">
 	
-<h2><small>Manager:</small> <?php echo $manager ?></h2>
+<h2><small>Manager:</small> <?php echo $manager_name ?></h2>
 
 <h1>Add New Entry</h1>
     
@@ -52,7 +53,7 @@
 <label for="rebate_percentage">Rebate percentage:</label>
 <input type="range" name="rebate_percentage" id="rebate_percentage" value="0" min="0" max="100" />
 
-<button id="submit" name="submit" class="btn btn-success" type="submit">Save and submit</button>
+<button id="submit-add-new-sale" name="submit" class="btn btn-success" type="submit">Save and submit</button>
 
 </div>
 </fieldset>

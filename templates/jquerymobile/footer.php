@@ -7,6 +7,8 @@
 	</div><!-- /footer -->
 </div><!-- /page -->
 
-<script src="jquerymobile/js/custom.js"></script>
+<script src="jquerymobile/jquery.validate.min.js"></script>
+<script src="jquerymobile/custom.js"></script>
+
 </body>
 </html>

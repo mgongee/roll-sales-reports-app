@@ -17,8 +17,9 @@ class RollSaleManager {
 			$rebate_percentage = round(floatval($data['rebate_percentage']),2);
 		}
 		
-		$sql = "INSERT INTO `roll_sales` ( `manager_id`, `state`, `rolls_sold`, `site_address`, `builder`, `distributor`, `rebate`, `rebate_percentage`, `invoice_file`, `created_at`) VALUES 
+		$sql = "INSERT INTO `roll_sales` ( `manager_id`, `manager_name`, `state`, `rolls_sold`, `site_address`, `builder`, `distributor`, `rebate`, `rebate_percentage`, `invoice_file`, `created_at`) VALUES 
 				( '" . intval($data['manager_id']) . "', 
+				'" . mysql_real_escape_string($data['manager_name']) . "',
 				'" . $data['state'] . "',
 				'" . intval($data['rolls_sold']) . "',
 				'" . mysql_real_escape_string($data['site_address']) . "',
