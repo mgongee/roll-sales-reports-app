@@ -18,6 +18,7 @@ $(document).ready(function(){
             },
             rolls_sold: {
                 required: true,
+				digits: true,
             }
         }
     });

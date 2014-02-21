@@ -69,13 +69,6 @@ class RollSaleManager {
 		return $rows;
 	}
 	
-	static public function getManagerName($entries) {
-		foreach ($entries as &$entry) {
-			$entry['manager_name'] = 'John Doe';//	$entry['manager_id']
-		}
-		return $entries;
-	}
-	
 	static public function getCountInEachState() {
 		global $DB;
 		$rows = array();
@@ -147,7 +140,6 @@ class RollSaleManager {
 		else {
 			$salesInfo = self::getAll();
 		}
-		$salesInfo = self::getManagerName($salesInfo);
 		
 		$xlsWriter = new ListReportXlsWriter($salesInfo);
 		$xlsWriter->writeAsExcel5($savePath);
@@ -163,7 +155,6 @@ class RollSaleManager {
 		else {
 			$salesInfo = self::getAll();
 		}
-		$salesInfo = self::getManagerName($salesInfo);
 		
 		$writer = new ListReportDocWriter($salesInfo);
 		$content = $writer->write();
