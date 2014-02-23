@@ -8,5 +8,5 @@ $config = array(
 	'upload_dir' => "uploads" ,
 	'reports_dir' => "reports" ,
 	'states' => array('NSW','VIC','QLD','WA','TAS','SA','ACT'),
-	'theme' => 'jquerymobile'
+	'theme' => 'jquerymobile' // use 'jquerymobile' or 'bootstrap'
 );
