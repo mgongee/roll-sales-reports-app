@@ -195,4 +195,13 @@ class RollSaleController {
 		
 		return $this->headers($headers,$content);
 	}
+	
+	private function pageDelete() {
+		if (RollSaleManager::delete(intval($_GET['id']))) {
+			return 'ok';
+		}
+		else {
+			return 'fail';
+		}
+	}
 }

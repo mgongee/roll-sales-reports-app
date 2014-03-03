@@ -170,6 +170,12 @@ class RollSaleManager {
 		
 		return $content;
 	}
+	
+	static public function delete($id) {
+		global $DB;
+		$rs = $DB->Execute("DELETE FROM `roll_sales` where id = " . intval($id) . " LIMIT 1");
+		return (bool)$rs;
+	}
 
 }
 ?>

@@ -35,6 +35,7 @@
 			<th style="min-width: 100px">Distributor</th>
 			<th style="min-width: 100px">Rebate</th>
 			<th style="min-width: 100px">Invoice</th>
+			<th></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -58,6 +59,13 @@
 				No file
 				<?php endif; ?>
 			</td>
+			<td>
+				<a id="delete-<?php echo $entry['id']?>" href="#popupConfirmDelete" data-mini="true" data-inline="true" data-theme="c" data-role="button" data-rel="popup">
+					<span class="ui-btn-inner ui-btn-corner-all">
+						<span class="ui-btn-text">Delete</span>
+					</span>
+				</a>
+			</td>
 		</tr>
 		<?php
 		}
@@ -69,3 +77,20 @@
     
 <a data-ajax="false" href="?route=export_excel_list<?php echo $state ? "&state=$state" : ""; ?>" data-role="button" data-inline="true">Download Excel</a>
 <a data-ajax="false" href="?route=export_word_list<?php echo $state ? "&state=$state" : ""; ?>" data-role="button" data-inline="true">Download Word</a>
+
+<div data-role="popup" id="popupConfirmDelete">
+	<div class="ui-corner-top ui-header ui-bar-a" data-theme="a" data-role="header" role="banner">
+		<h1 class="ui-title" role="heading" aria-level="1">Delete Entry?</h1>
+	</div>
+	<h3 class="ui-title">Are you sure you want to delete this entry?</h3>
+	<p>This action cannot be undone.</p>
+	<div class="ui-grid-b">
+	<div class="ui-block-a">
+		<a id="buttonDeleteClose" data-theme="c" data-inline="true" data-role="button" href="#" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-up-c"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">Cancel</span></span></a>
+	</div>
+	<div class="ui-block-b"></div>
+	<div class="ui-block-c">
+		<a id="buttonDeleteConfirm" data-theme="b" data-transition="flow" data-inline="true" data-role="button" href="#" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-up-b"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">Delete</span></span></a>
+	</div>
+	</div><!-- /grid-b -->
+</div>
