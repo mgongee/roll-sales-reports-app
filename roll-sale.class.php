@@ -117,7 +117,19 @@ class RollSaleManager {
 	}
 	
 		
+	static public  function makePieChartStats($statesData) {
+		global $DB;
+		
+		$pieChartStats = array();
+		
+		foreach ($statesData as $state => $stateData) {
+			$pieChartStats[] = array($state, $stateData['rolls'] ? intval($stateData['rolls']) : 0);
+		}
+		return $pieChartStats;
+	}
+	
 	static public  function generateStatesReportXls() {
+	
 		global $CONF;
 		$filePath = $CONF['reports_dir'] . DIRECTORY_SEPARATOR . time() . '_states.xls';
 		$savePath = dirname(__FILE__) . DIRECTORY_SEPARATOR . $filePath;

@@ -4,6 +4,31 @@
 		<?php echo $manager_name ?>
 	</h1>
 
+	<div id="piechart" style="width:600px;height:260px;"></div>
+	<script>
+		$(document).ready(function(){
+			/*
+			 * ['Heavy Industry', 12],['Retail', 9], ['Light Industry', 14],
+				['Out of home', 16], ['Commuting', 7], ['Orientation', 9]
+			 */
+			var data = <?php echo $piechart_data; ?>;
+			var plot1 = jQuery.jqplot('piechart', [data],
+					{
+						seriesDefaults: {
+							// Make this a pie chart.
+							renderer: jQuery.jqplot.PieRenderer,
+							rendererOptions: {
+								// Put data labels on the pie slices.
+								// By default, labels show the percentage of the slice.
+								showDataLabels: true
+							}
+						},
+						legend: {show: true, location: 'e'}
+					}
+			);
+		  });
+	</script>
+
 	<h1>Sales by state</h1>
     
 	<hr>

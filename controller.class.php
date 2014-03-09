@@ -62,8 +62,11 @@ class RollSaleController {
 	private function pageIndex() {
 		global $T;
 		
-		$T['states'] = RollSaleManager::getStatesInfo();
+		$states_data =  RollSaleManager::getStatesInfo();
+		$piechart_data = RollSaleManager::makePieChartStats($states_data);
 		
+		$T['states'] = $states_data;
+		$T['piechart_data'] = json_encode($piechart_data);
 		
 		$templateName = __FUNCTION__;
 		return $this->compose($templateName);
