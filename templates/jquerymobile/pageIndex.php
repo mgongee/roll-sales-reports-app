@@ -4,6 +4,8 @@
 		<?php echo $manager_name ?>
 	</h1>
 
+	<h1>Sales by state</h1>
+    
 	<div id="piechart" style="width:600px;height:260px;"></div>
 	<script>
 		$(document).ready(function(){
@@ -28,10 +30,6 @@
 			);
 		  });
 	</script>
-
-	<h1>Sales by state</h1>
-    
-	<hr>
 	
 	<div id="mainContent">
 		<div class="ui-grid-b">
