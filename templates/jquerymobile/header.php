@@ -12,8 +12,9 @@
 
 		<!-- for pie charts -->
 		<link rel="stylesheet" href="bootstrap/css/jquery.jqplot.min.css" />
-		<script src="bootstrap/js/jquery.jqplot.min.js"></script>
-		<script src="bootstrap/js/jqplot.pieRenderer.min.js"></script>
+		<script src="jquerymobile/jquery.validate.min.js"></script>
+		<script src="jquerymobile/jquery.jqplot.min.js"></script>
+		<script src="jquerymobile/jqplot.pieRenderer.min.js"></script>
 		
 		
 		<!-- for this template-->
